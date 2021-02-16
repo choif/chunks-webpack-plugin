@@ -90,7 +90,7 @@ export = class ChunksWebpackPlugin {
 	 * @param {Object} compiler The Webpack compiler variable
 	 */
 	apply(compiler: Compiler): void {
-		this.isWebpack4 = webpack.version.startsWith('4.');
+		this.isWebpack4 = webpack.version.startsWith('4.') || webpack.version.startsWith('5.');
 		const compilerHook = this.isWebpack4 ? 'emit' : 'thisCompilation';
 		compiler.hooks[compilerHook].tap('ChunksWebpackPlugin', this.hookCallback.bind(this));
 	}
